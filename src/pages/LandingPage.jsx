@@ -25,7 +25,9 @@ const LandingPage = () => {
 
       {/* Featured Beats Section */}
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-pink-400 mb-8">🔥 Featured Beats</h2>
+        <h2 className="text-3xl font-bold text-center text-pink-400 mb-8">
+          🔥 Featured Beats
+        </h2>
 
         {featuredBeats.length === 0 ? (
           <p className="text-center text-gray-400">No featured beats available.</p>
@@ -45,11 +47,15 @@ const LandingPage = () => {
                 )}
                 <h3 className="text-lg font-semibold text-white mb-1">{beat.title}</h3>
                 <p className="text-pink-400 font-medium mb-2">${beat.price}</p>
-                <audio
-                  controls
-                  className="mt-auto bg-gray-700 rounded w-full"
-                  src={`${process.env.REACT_APP_API_URL}/${beat.filePath.replace(/\\/g, '/')}`}
-                />
+
+                {/* 🎧 Styled Audio Player */}
+                <div className="mt-auto">
+                  <audio
+                    controls
+                    className="w-full mt-2 bg-black rounded-lg ring-2 ring-pink-500 focus:outline-none"
+                    src={`${process.env.REACT_APP_API_URL}/${beat.filePath.replace(/\\/g, '/')}`}
+                  />
+                </div>
               </div>
             ))}
           </div>
