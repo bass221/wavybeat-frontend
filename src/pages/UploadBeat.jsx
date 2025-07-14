@@ -98,11 +98,20 @@ const UploadBeat = () => {
           </label>
           <input
             type="file"
-            accept="audio/*"
-            onChange={(e) => setAudioFile(e.target.files[0])}
-            className="w-full text-white file:cursor-pointer"
+            accept=".mp3,audio/mpeg,audio/wav"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file && file.type.startsWith('audio/')) {
+                setAudioFile(file);
+              } else {
+                alert('Please select a valid audio file (MP3 or WAV).');
+                e.target.value = ''; // reset invalid file
+              }
+            }}
+            className="w-full text-white"
             required
           />
+
 
           {/* Image File */}
           <label className="block text-sm font-medium text-gray-300">
