@@ -20,6 +20,15 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white">
+      {/* 🔥 Logo Top Center */}
+      <header className="flex justify-center py-6">
+        <img
+          src="/logo.png"
+          alt="WavyBeat Logo"
+          className="h-16 w-auto object-contain"
+        />
+      </header>
+
       {/* Hero Section */}
       <Hero />
 
