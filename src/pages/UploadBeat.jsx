@@ -1,4 +1,3 @@
-// src/pages/UploadBeat.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -29,7 +28,7 @@ const UploadBeat = () => {
     if (zipFile) formData.append('zip', zipFile);
 
     try {
-      await axios.post('http://localhost:5000/api/beats/upload', formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/beats/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

@@ -8,7 +8,7 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/beats');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/beats`);
         setFeaturedBeats(res.data.slice(0, 3)); // Limit to first 3
       } catch (err) {
         console.error('❌ Failed to fetch featured beats:', err);
@@ -38,7 +38,7 @@ const LandingPage = () => {
               >
                 {beat.imagePath && (
                   <img
-                    src={`http://localhost:5000/${beat.imagePath}`}
+                    src={`${process.env.REACT_APP_API_URL}/${beat.imagePath}`}
                     alt={beat.title}
                     className="w-full h-40 object-cover rounded-lg mb-3 border border-pink-500"
                   />
@@ -48,7 +48,7 @@ const LandingPage = () => {
                 <audio
                   controls
                   className="mt-auto bg-gray-700 rounded w-full"
-                  src={`http://localhost:5000/${beat.filePath.replace(/\\/g, '/')}`}
+                  src={`${process.env.REACT_APP_API_URL}/${beat.filePath.replace(/\\/g, '/')}`}
                 />
               </div>
             ))}
